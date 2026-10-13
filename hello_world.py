@@ -3,7 +3,7 @@ import asyncio
 
 from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher, types, F
-from aiogram.filters import Command
+from aiogram.filters import BotCommand
 
 from handlers import router
 from keyboards import main_keyboard, main_reply_keyboard
@@ -22,9 +22,19 @@ dp = Dispatcher()
 
 dp.include_router(router)
 
+async def set_commands(bot: Bot):
+    commands = [
+        BotCommand(command="start", description="Запустить бота"),
+        BotCommand(command="hello", description="Поздороваться"),
+        BotCommand(command="start_2", description="Показать кнопки"),
+        BotCommand(command="settings", description="Настройки"),
+    ]
+    await bot.set_my_commands(commands)
+
 
 async def main():
     print(f"🚀 Bot starting, version={VERSION}")
+    await set_commands(bot)
     await dp.start_polling(bot)
 
 
