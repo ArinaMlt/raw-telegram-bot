@@ -1,0 +1,23 @@
+name: Build and Test Bot
+
+# Запускать при пуше в ветку main
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Скачать код из репозитория
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Собрать Docker-образ (проверка, что всё собирается)
+      - name: Build Docker image
+        run: docker build -t test-bot .
+
+      # 3. Проверить, что образ запускается (опционально)
+      - name: Test image
+        run: docker run --rm test-bot python -c "print('Build OK')"
