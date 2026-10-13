@@ -1,6 +1,9 @@
 # Используем легкий образ Python
 FROM python:3.11-slim
 
+ARG APP_VERSION=dev
+ENV APP_VERSION=${APP_VERSION}
+
 # Устанавливаем системные зависимости
 RUN apt-get update && apt-get clean
 
