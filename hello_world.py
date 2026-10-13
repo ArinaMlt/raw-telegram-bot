@@ -2,11 +2,10 @@ import os
 import asyncio
 
 from dotenv import load_dotenv
-from aiogram import Bot, Dispatcher, types, F
-from aiogram.filters import BotCommand
+from aiogram import Bot, Dispatcher
+from aiogram.types import BotCommand
 
 from handlers import router
-from keyboards import main_keyboard, main_reply_keyboard
 
 VERSION = os.getenv("APP_VERSION", "unknown")
 
