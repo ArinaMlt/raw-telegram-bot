@@ -2,7 +2,11 @@ version: "3.8"
 
 services:
   telegram-bot:
-    build: .
+    build:
+      context: .
+      args:
+        APP_VERSION: ${APP_VERSION:-dev}
+    image: mybot/telegram-bot:${APP_VERSION:-dev}
     container_name: hello-world-bot
     restart: unless-stopped
     env_file:
