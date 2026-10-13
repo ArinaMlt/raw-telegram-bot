@@ -1,0 +1,39 @@
+name: Python CI
+
+# Запускать при создании или обновлении Pull Request в main
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Скачать код из репозитория
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Установить Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11-slim"
+
+      # 3. Установить зависимости
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 4. Проверить, что код синтаксически корректен
+      # (Это заменяет "сборку" для Python, так как компиляции нет)
+      - name: Check syntax
+        run: |
+          python -m py_compile hello_world.py
+
+      # 5. (Опционально) Запустить тесты, если они есть
+      # - name: Run tests
+      #   run: |
+      #     pip install pytest
+      #     pytest
