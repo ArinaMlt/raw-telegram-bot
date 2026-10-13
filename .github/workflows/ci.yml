@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11-slim"
+          python-version: "3.11"
 
       # 3. Установить зависимости
       - name: Install dependencies
@@ -30,7 +30,7 @@ jobs:
       # (Это заменяет "сборку" для Python, так как компиляции нет)
       - name: Check syntax
         run: |
-          python -m py_compile hello_world.py
+          python -m compileall .
 
       # 5. (Опционально) Запустить тесты, если они есть
       # - name: Run tests
