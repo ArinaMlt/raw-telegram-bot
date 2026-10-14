@@ -19,7 +19,8 @@ def main_reply_keyboard() -> ReplyKeyboardMarkup:
     kb = ReplyKeyboardBuilder()
     kb.button(text="📊 Главное меню")
     kb.button(text="⚙️ Настройки")
-    kb.adjust(2)
+    kb.button(text="🌱 Привычки")
+    kb.adjust(2, 1)
     return kb.as_markup(
         resize_keyboard=True,   # компактный размер, не растягивается на всю ширину
         one_time_keyboard=True,  # исчезает после первого нажатия
