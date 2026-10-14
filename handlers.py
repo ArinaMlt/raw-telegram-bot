@@ -49,7 +49,7 @@ async def on_abs(callback: types.CallbackQuery):
 
 @router.message(F.text == "📊 Главное меню")
 async def on_numbers(message: types.Message):
-    await message.answer("Ты нажал One")
+    await message.reply("Ты нажал One")
 
 
 @router.message(F.text == "⚙️ Настройки")
